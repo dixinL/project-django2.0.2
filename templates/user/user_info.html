@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}详细信息{% endblock %}
+
+{% block content %}
+
+<p>username : {{ user }}</p>
+{% for age in child %}
+
+<p>child{{ forloop.counter}} : {{ age }}</p>
+
+{% endfor %}
+{% endblock %}

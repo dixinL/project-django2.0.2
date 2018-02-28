@@ -1,7 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth import authenticate
 
 
 class LoginForm(forms.Form):
@@ -22,4 +21,8 @@ class RegisterForm(UserCreationForm):
         if num_words != 11 or not username.isdigit():
             raise forms.ValidationError("请输入正确的手机号码")
         return username
+
+
+class InfoFillForm(forms.Form):
+    child_age = forms.IntegerField(label='孩子的年龄')
 

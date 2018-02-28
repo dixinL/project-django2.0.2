@@ -3,7 +3,14 @@
 {% block title %}欢迎光临首页{% endblock %}
  
 {% block content %}
+{% if request.user.is_active %}
+user name : {{ request.user.username }}
+<li><a href="{% url 'info_fill' %}">填写详细信息</a></li>
+<li><a href="{% url 'user_info' %}">个人信息</a></li>
+<li><a href="{% url 'logout' %}">退出登陆</a></li>
 
-{{ request.user.username }}
-
+{% else %}
+<li>请先<a href="{% url 'login' %}">登陆</a></li>
+<li>没有账号？<a href="{% url 'register' %}">注册</a></li>
+{% endif %}
 {% endblock %}

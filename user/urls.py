@@ -7,5 +7,6 @@ urlpatterns = [
     path('', index.index_view, name='index'),
     path('register/', register.register_view, name='register'),
     # path('detailed/', ),
-    path('user-info/', user_info.user_info_view, name='user_info'),
+    path('user_info/', user_info.user_info_view, name='user_info'),
+    path('info_fill/', user_info.info_fill_view, name='info_fill'),
 ]
