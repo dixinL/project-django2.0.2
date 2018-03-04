@@ -9,7 +9,6 @@ UPLOAD_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'upload_di
 
 
 def handle_uploaded_file(f, file_name, series):
-    form = UploadForm()
     path = os.path.join(UPLOAD_DIR, series)
     print(path)
     if not os.path.exists(path):  # 判断是否存在文件或目录path
