@@ -8,7 +8,7 @@ from .models import UserInfo
 def user_info_view(request):
     context = {}
     user = User.objects.get(username=request.user.username)
-    child = user.userinfo.all().filter(user=user.id)
+    child = user.user_info.all().filter(user=user.id)
     context['child'] = []
     for i in range(len(child)):
         age = child[i].child_age
