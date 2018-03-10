@@ -1,12 +1,11 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django import forms
-import datetime
+
 # Create your models here.
 
 
 # 课程模型
-# TODO：label
+# TODO：label：一个为上传文件加入的标签选项、用来搜索。最好用下拉菜单形式
 class CurriculumInfo(models.Model):
     date = models.DateField()
     owner = models.ForeignKey(User, on_delete=models.CASCADE,  related_name='curriculum_info')
@@ -16,12 +15,10 @@ class CurriculumInfo(models.Model):
     price = models.IntegerField(verbose_name='价格')
     grade = models.CharField(verbose_name='年级', max_length=50)
 
+    class Meta:
+        # permissions 会在数据库创建属于该模块的一个自定义权限
+        permissions = (
+            ('upload_file', '可以上传文件'),
+        )
 
-# class UploadForm(forms.ModelForm):
-#     file = forms.FileField(label='请上传文件')
-#
-#     class Meta:
-#         models = CurriculumInfo
-#         field = ('series',)
-#         exclude = ('path', 'date', 'owner', 'file_name', 'path',)
 

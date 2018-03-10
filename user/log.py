@@ -24,9 +24,6 @@ def login_view(request):
         return render(request, 'user/login.html', {'form':loginform})
 
 
-
-
-
 # 登出
 def logout_view(req):
     # 清理cookie里保存username

@@ -1,5 +1,5 @@
 
 
-def paly_view(request):
+def play_view(request):
     pass
 
