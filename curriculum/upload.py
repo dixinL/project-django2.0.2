@@ -22,7 +22,7 @@ def handle_uploaded_file(f, file_name, series):
     return path
 
 
-# 监测用户是否有上传文件的权限，如果没有返回主页
+# 检测用户是否有上传文件的权限，如果没有返回主页
 @permission_required('curriculum.upload_file',login_url='/')
 # 上传界面
 def upload_view(request):

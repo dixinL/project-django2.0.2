@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}播放界面{% endblock %}
+{% block js %}
+{% load static %}
+
+<script src="{% static "curriculum/jquery-3.3.1.js" %}"></script>
+
+
+<script>
+$(document).ready(function(){
+    $("#button1").click(function () {
+        $("#play").load('/play_ajax_obj/1');
+        });
+});
+</script>
+
+{% endblock %}
+{% block content %}
+<h1>播放</h1>
+<div id="play">
+
+
+</div>
+<button id="button1"></button>
+
+{% endblock %}
