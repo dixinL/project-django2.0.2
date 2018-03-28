@@ -14,10 +14,6 @@ def play_view(request):
 # AJAX对象，用来返回一个播放器对象，具体的视频文件需要继续调用其他url
 # 参数：name：用来生成一个src（视频源url），传给play_file_obj（src）
 def play_ajax_obj(request, name):
-    # src = os.path.join("play_file_obj/", name)
-    # name = name + '.mp4'
-    # file_path = os.path.join(PLAY_PATH, name)
-    # response = FileResponse(open(file, 'rb'), content_type='video/mp4')
     return render(request, 'curriculum/play_ajax_obj.html', {
         'name': name,
     })
