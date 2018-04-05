@@ -8,8 +8,9 @@
 
 <script>
 $(document).ready(function(){
-    $("#button1").click(function () {
-        $("#play").load('/play_ajax_obj/1');
+    $("button").click(function () {
+        var path=$(this).attr("about")
+        $("#play").load('/play_ajax_obj/'+path);
         });
 });
 </script>
@@ -18,9 +19,14 @@ $(document).ready(function(){
 {% block content %}
 <h1>播放</h1>
 <div id="play">
-
+<video width="320" height="240" controls="controls">
+  <source src="" type="video/mp4">
+Your browser does not support the video tag.
+</video>
 
 </div>
-<button id="button1">ajax</button>
+{% for p in path %}
+<button about="{{ p }}" id="but{{ forloop.counter }}">第{{ forloop.counter }}集</button>
+{% endfor %}
 
 {% endblock %}

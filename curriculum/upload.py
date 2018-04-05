@@ -29,23 +29,26 @@ def upload_view(request):
     if request.method == 'POST':
         form = UploadForm(request.POST, request.FILES)
         if form.is_valid():
+            number = str(form.cleaned_data['number'])
             date = datetime.date.today()
             owner = User.objects.get(username=request.user.username)
             series = form.cleaned_data['series']
-            file_name = series + request.user.username + str(date) + '.mp4'
+            file_name = series + number +request.user.username + str(date) + '.mp4'
             path = handle_uploaded_file(request.FILES['file'], file_name=file_name, series=series)
             new_curriculum = CurriculumInfo(date=date,
                                             owner=owner,
                                             series=series,
-                                            file_name=file_name,
+                                            # TODO:判断上传文件类型后决定如何存储file_name
+                                            file_name=file_name[:-4],
                                             path=path,
                                             grade=form.cleaned_data['grade'],
                                             price=form.cleaned_data['price'],
+                                            number=form.cleaned_data['number']
                                             )
             new_curriculum.save()
         else:
             return render(request, 'curriculum/upload.html', {'form': form})
-        return redirect('/')
+        return redirect('upload')
     else:
         form = UploadForm()
         return render(request, 'curriculum/upload.html', {'form': form})
