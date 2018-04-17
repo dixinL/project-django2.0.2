@@ -7,4 +7,5 @@ urlpatterns = [
     path('play_file_obj/<slug:series>/<slug:name>/', play.play_file_obj, name='play_file_obj'),
     path('play_ajax_obj/<slug:series>/<slug:name>/', play.play_ajax_obj, name='play_ajax_obj'),
     path('play/<slug:series>/', play.play_view, name='play'),
+    path('play/', play.play_index_view, name='play_index'),
 ]
