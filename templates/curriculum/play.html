@@ -3,7 +3,8 @@
 {% block js %}
 {% load static %}
 
-<script src="{% static 'curriculum/jquery-3.3.1.js' %}"></script>
+<script src="{% static "curriculum/jquery-3.3.1.js" %}"></script>
+
 
 <script>
 $(document).ready(function(){
@@ -13,52 +14,19 @@ $(document).ready(function(){
         });
 });
 </script>
-<style>
-  .incenter{
-        background-color: white;
-            margin: auto;
-        position: relative;
-        display:inline-block;
-          *display:inline;
-          *zoom:1;
-        }
-  #play{
-            width: 1050px;
-            height: 560px;
-            float: left;
-            background: #000000;
-            margin-top: 10px;
-            margin-right: 5px;
-            margin-left: 5px;
-        }
-  #list{
-            width: 250px;
-            height: 560px;
-            float: right;
-            background: #80ff80;
-            margin-top: 10px;
-            margin-left: 5px;
-            margin-right: 5px;
-        }
-</style>
+
 {% endblock %}
 {% block content %}
-<div class="incenter">
-  <h2>&nbsp;XXX教学视频播放</h2>
-<div>
-  <div id="play">
-    <video width="1050" height="560" controls="controls">
-      <source src="" type="video/mp4">
-    Your browser does not support the video tag.
-    </video>
-  </div>
-  <div id="list">
-    {% for p in path %}
-    <button about="{{ p }}" id="but{{ forloop.counter }}" style="width: 250px;height: 50px;">第{{ forloop.counter }}集</button>
-    {% endfor %}
-  </div>
-</div>
-</div>
+<h1>播放</h1>
+<div id="play">
+<video width="320" height="240" controls="controls">
+  <source src="" type="video/mp4">
+Your browser does not support the video tag.
+</video>
 
+</div>
+{% for p in path %}
+<button about="{{ p }}" id="but{{ forloop.counter }}">第{{ forloop.counter }}集</button>
+{% endfor %}
 
 {% endblock %}

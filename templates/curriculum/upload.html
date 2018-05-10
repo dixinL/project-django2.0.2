@@ -1,88 +1,18 @@
 {% extends "base.html" %}
-{% block js %}
-{% load static %}
 
-<script src="{% static 'curriculum/jquery-3.3.1.js' %}"></script>
-<style>
-  .incenter{
-         -moz-border-radius: 20px;
-        -webkit-border-radius: 20px;
-        border-radius: 20px;
-        background-color: white;
-        opacity: 0.9;
-        padding: 30px;
-            margin: auto;
-        position: relative;
-        top: 80px;
-        display:inline-block;
-          *display:inline;
-          *zoom:1;
-        }
-    td{
-        padding: 5px 5px;
-    }
-</style>
-{% endblock %}
 {% block content %}
-<img src="/static/curriculum/image/home1.jpg" style="width: 100%;height: 100%;position: absolute;top: 46px;z-index: -1;">
-<div class="incenter">
-    <form action="" method="post" enctype="multipart/form-data">
-      {% csrf_token %}
-        <table>
-            <tr>
-                <td style="text-align: right">
-                    年级：
-                </td>
-                <td>
-                    {{ form.grade }}
-                </td>
-            </tr>
-            <tr>
-                <td style="text-align: right">
-                    价格：
-                </td>
-                <td>
-                    {{ form.price }}
-                </td>
-            </tr>
-            <tr>
-                <td style="text-align: right">
-                    系列：
-                </td>
-                <td>
-                    {{ form.series }}
-                </td>
-            </tr>
-            <tr>
-                <td style="text-align: right">
-                    该视频为第几集：
-                </td>
-                <td>
-                    {{ form.number }}
-                </td>
-            </tr>
-            <tr>
-                <td style="text-align: right">
-                    请上传文件：
-                </td>
-                <td>
-                    {{ form.file }}
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2" style="text-align: center">
-                    <input type="submit" value="upload"/>
-                </td>
-            </tr>
-        </table>
 
+
+  <form action="" method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+        {{ form.as_p }}
       {% if form.error is not None %}
       {% for error in form.error %}
       {{ error }}
       {% endfor %}
       {% endif %}
+   <br/>
+   <input type="submit" value="upload"/>
   </form>
-</div>
-
 
 {% endblock %}
